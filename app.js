@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-
+require('dotenv').config();
 const placesRoute = require("./routes/places-routes");
 const usersRoutes = require("./routes/users-routes");
 const HttpError = require("./models/https-error");
@@ -29,7 +29,7 @@ app.use((error, req, res, next) => {
 
 mongoose
   .connect(
-    `mongodb+srv://Kolade:Olaide@cluster0.wygvx.mongodb.net/Places?retryWrites=true&w=majority`
+    process.env.MONGO_URI,
   )
   .then(() => {
     app.listen(5000, () => console.log("Server running on port 5000"));
