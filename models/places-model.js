@@ -31,3 +31,8 @@ const placeSchema = new Schema({
 })
 
 module.exports = mongoose.model('Place', placeSchema)
+
+
+
+ // "test": "echo \"Error: no test specified\" && exit 1",
+    // "start": "nodemon app.js"

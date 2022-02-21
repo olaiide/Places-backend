@@ -23,6 +23,7 @@ const getUsers = async (req, res, next) => {
 
 const signup = async (req, res, next) => {
   const errors = validationResult(req);
+  res.setHeader("Access-Control-Allow-Origin", "*");
   if (!errors.isEmpty()) {
     //throw new HttpError({error errors.msg}, 422);
     return res.status(400).json({ errors: errors.array() });
