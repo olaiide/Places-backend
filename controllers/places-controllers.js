@@ -75,7 +75,7 @@ const createPlace = async (req, res, next) => {
     title,
     description,
     address,
-    location: { ...coordinates },
+ //   location: { ...coordinates },
     image:
       "https://en.wikipedia.org/wiki/File:Empire_State_Building_(aerial_view).jpg",
     creator,
@@ -94,12 +94,11 @@ const createPlace = async (req, res, next) => {
   try {
       const sess = await mongoose.startSession();
       sess.startTransaction();
-      await createdPlace.save({session : sess});
+     await createdPlace.save({session : sess});
       user.places.push(createdPlace);
-      await user.save({ session : sess});
+    await  user.save({ session : sess});
       await sess.commitTransaction();
   } catch (err) {
-    console.log(err);
     const error = new HttpError(
       "Creating place failed, please try again.",
       500
